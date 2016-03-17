@@ -1909,6 +1909,7 @@ module ActionView
 
       private
         def objectify_options(options)
+          raise ArgumentError, "#{options.inspect} does not respond to :merge, you should use a Hash." unless options.respond_to?(:merge)
           @default_options.merge(options.merge(object: @object))
         end
 
